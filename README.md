@@ -110,3 +110,4 @@ Example template definition:
 ## License
 
 MIT
+# social-assets-generator
