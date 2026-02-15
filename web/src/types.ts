@@ -17,11 +17,24 @@ export interface BrandConfig {
   twitter?: string;
 }
 
+export type TemplateCategory =
+  | 'chain'
+  | 'feature'
+  | 'swap'
+  | 'portfolio'
+  | 'wallet'
+  | 'multichain'
+  | 'thread'
+  | 'stats'
+  | 'community'
+  | 'announcement'
+  | 'quote';
+
 export interface TemplateDefinition {
   id: string;
   name: string;
   description: string;
-  category: 'social' | 'banner' | 'announcement' | 'quote';
+  category: TemplateCategory;
   aspectRatio: '1:1' | '16:9' | '9:16' | '4:5';
   variables: TemplateVariable[];
 }

@@ -22,12 +22,26 @@ export const BrandConfigSchema = z.object({
 
 export type BrandConfig = z.infer<typeof BrandConfigSchema>;
 
+// Template categories
+export type TemplateCategory =
+  | 'chain'
+  | 'feature'
+  | 'swap'
+  | 'portfolio'
+  | 'wallet'
+  | 'multichain'
+  | 'thread'
+  | 'stats'
+  | 'community'
+  | 'announcement'
+  | 'quote';
+
 // Template definition
 export interface TemplateDefinition {
   id: string;
   name: string;
   description: string;
-  category: 'social' | 'banner' | 'announcement' | 'quote';
+  category: TemplateCategory;
   aspectRatio: '1:1' | '16:9' | '9:16' | '4:5';
   variables: TemplateVariable[];
 }
