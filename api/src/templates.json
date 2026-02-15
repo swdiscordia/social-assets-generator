@@ -1,0 +1,53 @@
+[
+  {
+    "id": "quote-card-1",
+    "name": "Quote Card - Minimal",
+    "description": "Clean quote card with logo and brand colors",
+    "category": "quote",
+    "aspectRatio": "1:1",
+    "variables": [
+      {
+        "name": "quote",
+        "type": "text",
+        "label": "Quote text",
+        "default": "Building the future of finance.",
+        "maxLength": 200
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "label": "Author (optional)",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "id": "announcement-banner-1",
+    "name": "Announcement Banner",
+    "description": "Bold announcement banner for product launches",
+    "category": "announcement",
+    "aspectRatio": "16:9",
+    "variables": [
+      {
+        "name": "headline",
+        "type": "text",
+        "label": "Headline",
+        "default": "Introducing Something New",
+        "maxLength": 60
+      },
+      {
+        "name": "subheadline",
+        "type": "text",
+        "label": "Subheadline",
+        "default": "The future is here.",
+        "maxLength": 120
+      },
+      {
+        "name": "cta",
+        "type": "text",
+        "label": "Call to action",
+        "default": "Learn more →"
+      }
+    ]
+  }
+]
