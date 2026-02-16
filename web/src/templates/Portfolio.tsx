@@ -21,7 +21,7 @@ export function PortfolioTrackerPromo({ brand, variables }: TemplateProps) {
       </svg>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -45,7 +45,7 @@ export function PortfolioMultichain({ brand, variables }: TemplateProps) {
   return (
     <div style={{ width, height, background: `linear-gradient(135deg, ${brand.colors.background} 0%, ${hexAlpha(brand.colors.primary, 0.08)} 100%)`, padding: 48, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: FONT_FAMILY, position: 'relative', overflow: 'hidden' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -78,7 +78,7 @@ export function PortfolioPerformance({ brand, variables }: TemplateProps) {
       )}
 
       <div style={{ position: 'absolute', top: 48, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 500, color: hexAlpha(brand.colors.text, 0.5) }}>{brand.name}</span>
       </div>
 
@@ -102,7 +102,7 @@ export function PortfolioDefiDashboard({ brand, variables }: TemplateProps) {
     <div style={{ width, height, background: brand.colors.background, padding: 48, display: 'flex', fontFamily: FONT_FAMILY, position: 'relative', overflow: 'hidden' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
 
@@ -145,7 +145,7 @@ export function PortfolioAllInOne({ brand, variables }: TemplateProps) {
     <div style={{ width, height, background: brand.colors.background, padding: 48, display: 'flex', fontFamily: FONT_FAMILY, position: 'relative', overflow: 'hidden' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
 

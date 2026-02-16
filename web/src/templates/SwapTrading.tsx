@@ -13,7 +13,7 @@ export function SwapTokenPair({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, ${hexAlpha(brand.colors.primary, 0.06)} 0%, transparent 40%, ${hexAlpha(accent, 0.06)} 100%)` }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -48,7 +48,7 @@ export function SwapBestRates({ brand, variables }: TemplateProps) {
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
 
@@ -88,7 +88,7 @@ export function SwapNewToken({ brand, variables }: TemplateProps) {
       ))}
 
       <div style={{ position: 'absolute', top: 48, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -116,7 +116,7 @@ export function SwapZeroFees({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 600, height: 600, borderRadius: '50%', background: `radial-gradient(circle, ${hexAlpha(brand.colors.accent || brand.colors.primary, 0.1)} 0%, transparent 60%)` }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -144,7 +144,7 @@ export function SwapCrossChain({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${hexAlpha(brand.colors.primary, 0.2)}, ${hexAlpha(accent, 0.2)}, transparent)`, transform: 'translateY(-50%)' }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -184,7 +184,7 @@ export function SwapVolumeMilestone({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 500, height: 500, borderRadius: '50%', background: `radial-gradient(circle, ${hexAlpha(accent, 0.12)} 0%, transparent 60%)` }} />
 
       <div style={{ position: 'absolute', top: 48, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text, lineHeight: '36px' }}>{brand.name}</span>
       </div>
 

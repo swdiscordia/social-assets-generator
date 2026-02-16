@@ -13,7 +13,7 @@ export function FeatureHeroBold({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: 0, right: 0, width: 300, height: 300, background: `radial-gradient(circle at top right, ${hexAlpha(brand.colors.primary, 0.12)} 0%, transparent 70%)` }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -37,7 +37,7 @@ export function FeatureHeroMinimal({ brand, variables }: TemplateProps) {
   return (
     <div style={{ width, height, background: brand.colors.background, padding: 80, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: FONT_FAMILY, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 40, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 32, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 32, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 14, fontWeight: 500, color: hexAlpha(brand.colors.text, 0.4) }}>{brand.name}</span>
       </div>
 
@@ -66,7 +66,7 @@ export function FeatureSpotlight({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ padding: '6px 16px', borderRadius: 20, background: brand.colors.accent || brand.colors.primary, color: '#FFFFFF', fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>{badge}</div>
@@ -93,7 +93,7 @@ export function FeatureListCard({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: 0, right: 0, width: 400, height: 400, background: `radial-gradient(circle at top right, ${hexAlpha(brand.colors.primary, 0.06)} 0%, transparent 70%)` }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 18, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -129,7 +129,7 @@ export function FeatureUpdateLog({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ fontSize: 20, fontWeight: 600, color: brand.colors.accent || brand.colors.primary, fontFamily: "'SF Mono', 'Fira Code', monospace" }}>{version}</div>
@@ -164,7 +164,7 @@ export function FeatureComingSoon({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: 'uppercase' as const, color: hexAlpha(brand.colors.text, 0.4) }}>COMING SOON</div>
@@ -194,7 +194,7 @@ export function FeatureVersionBadge({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 200, height: 200, borderRadius: '50%', background: hexAlpha(brand.colors.primary, 0.06) }} />
 
       <div style={{ position: 'absolute', top: 48, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 500, color: hexAlpha(brand.colors.text, 0.5) }}>{brand.name}</span>
       </div>
 

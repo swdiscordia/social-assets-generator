@@ -17,7 +17,7 @@ export function WalletSelfCustody({ brand, variables }: TemplateProps) {
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', zIndex: 1, maxWidth: 600 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
 
@@ -45,7 +45,7 @@ export function WalletMultiWallet({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ fontSize: 14, color: hexAlpha(brand.colors.text, 0.4) }}>{subtitle}</div>
@@ -80,7 +80,7 @@ export function WalletConnectPromo({ brand, variables }: TemplateProps) {
       ))}
 
       <div style={{ position: 'absolute', top: 48, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -106,7 +106,7 @@ export function WalletSecurity({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(${hexAlpha(brand.colors.text, 0.02)} 1px, transparent 1px), linear-gradient(90deg, ${hexAlpha(brand.colors.text, 0.02)} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -139,7 +139,7 @@ export function WalletHardware({ brand, variables }: TemplateProps) {
       <div style={{ position: 'absolute', right: -100, top: -100, width: 400, height: 400, borderRadius: '50%', border: `1px solid ${hexAlpha(brand.colors.primary, 0.06)}` }} />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 

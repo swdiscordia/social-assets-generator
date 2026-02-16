@@ -17,7 +17,7 @@ export function CommunityAma({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ padding: '6px 16px', borderRadius: 8, background: hexAlpha(accent, 0.12), color: accent, fontSize: 13, fontWeight: 600 }}>{platform}</div>
@@ -59,7 +59,7 @@ export function CommunityGiveaway({ brand, variables }: TemplateProps) {
       ))}
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 18, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 
@@ -99,7 +99,7 @@ export function CommunityPartnership({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 48, position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 64, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 64, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 18, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ fontSize: 32, color: hexAlpha(brand.colors.text, 0.2), fontWeight: 300 }}>×</div>
@@ -135,7 +135,7 @@ export function CommunityGovernance({ brand, variables }: TemplateProps) {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={brand.logo} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
+          <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 36, width: 'auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 16, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
         </div>
         <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: 2, textTransform: 'uppercase' as const, color: hexAlpha(brand.colors.text, 0.3) }}>GOVERNANCE</div>
@@ -180,7 +180,7 @@ export function CommunityMilestone({ brand, variables }: TemplateProps) {
       ))}
 
       <div style={{ position: 'absolute', top: 48, left: 48, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src={brand.logo} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
+        <img src={"/images/fox-logo.svg"} alt={brand.name} style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: 18, fontWeight: 600, color: brand.colors.text }}>{brand.name}</span>
       </div>
 

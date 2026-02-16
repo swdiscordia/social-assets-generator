@@ -18,17 +18,9 @@ export interface BrandConfig {
 }
 
 export type TemplateCategory =
-  | 'chain'
-  | 'feature'
-  | 'swap'
-  | 'portfolio'
-  | 'wallet'
-  | 'multichain'
-  | 'thread'
-  | 'stats'
-  | 'community'
-  | 'announcement'
-  | 'quote';
+  | 'product'
+  | 'milestone'
+  | 'community';
 
 export interface TemplateDefinition {
   id: string;

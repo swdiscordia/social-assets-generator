@@ -11,22 +11,13 @@ interface GalleryViewProps {
 }
 
 const CATEGORY_LABELS: Record<TemplateCategory, string> = {
-  chain: 'Chain Announcements',
-  feature: 'Feature Announcements',
-  swap: 'Swap & Trading',
-  portfolio: 'Portfolio',
-  wallet: 'Wallet',
-  multichain: 'Multi-Chain',
-  thread: 'Thread Assets',
-  stats: 'Stats & Metrics',
+  product: 'Product Announcements',
+  milestone: 'Milestones',
   community: 'Community',
-  announcement: 'Announcements',
-  quote: 'Quotes',
 }
 
 const CATEGORY_ORDER: TemplateCategory[] = [
-  'chain', 'feature', 'swap', 'portfolio', 'wallet',
-  'multichain', 'thread', 'stats', 'community', 'announcement', 'quote',
+  'product', 'milestone', 'community',
 ]
 
 const THUMBNAIL_SCALE = 0.28

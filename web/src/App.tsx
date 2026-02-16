@@ -4,6 +4,7 @@ import { toPng } from 'html-to-image'
 import { BrandConfig, TemplateDefinition, DEFAULT_BRAND } from './types'
 import { templateRegistry } from './templates/registry'
 import { GalleryView } from './GalleryView'
+import { MediaSelector } from './components/MediaSelector'
 
 const fetchTemplates = async (): Promise<TemplateDefinition[]> => {
   const res = await fetch('/api/templates')
@@ -251,13 +252,39 @@ export default function App() {
                       <div key={v.name}>
                         <label className="block text-xs text-gray-400 mb-1">{v.label}</label>
                         {v.type === 'image' ? (
-                          <input
-                            type="text"
-                            value={variables[v.name] ?? v.default ?? ''}
-                            onChange={(e) => updateVariable(v.name, e.target.value)}
-                            placeholder="Image URL..."
-                            className="w-full bg-gray-800 rounded-lg px-3 py-2 text-white text-sm border border-gray-700 focus:border-blue-500 focus:outline-none"
-                          />
+                          <>
+                            {v.name === 'backgroundImage' ? (
+                              <MediaSelector
+                                value={variables[v.name] ?? v.default ?? ''}
+                                onChange={(url) => updateVariable(v.name, url)}
+                              />
+                            ) : (
+                              <div className="space-y-2">
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={(e) => {
+                                    const file = e.target.files?.[0]
+                                    if (file) {
+                                      const reader = new FileReader()
+                                      reader.onload = (event) => {
+                                        updateVariable(v.name, event.target?.result as string)
+                                      }
+                                      reader.readAsDataURL(file)
+                                    }
+                                  }}
+                                  className="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                                />
+                                {variables[v.name] && (
+                                  <img 
+                                    src={variables[v.name]} 
+                                    alt="Preview" 
+                                    className="w-full h-20 object-contain rounded bg-gray-800"
+                                  />
+                                )}
+                              </div>
+                            )}
+                          </>
                         ) : (
                           <textarea
                             value={variables[v.name] ?? v.default ?? ''}
