@@ -540,23 +540,25 @@ export function PartnershipHorizontal({ brand, variables }: TemplateProps) {
                 src={partnerLogo}
                 alt={partnerName}
                 style={{
-                  height: 56,
+                  height: partnerName ? 56 : 72,
                   width: 'auto',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))',
                 }}
               />
             )}
-            <span
-              style={{
-                fontSize: 36,
-                fontWeight: 800,
-                color: brand.colors.text,
-                letterSpacing: '0.02em',
-              }}
-            >
-              {partnerName}
-            </span>
+            {partnerName && (
+              <span
+                style={{
+                  fontSize: 36,
+                  fontWeight: 800,
+                  color: brand.colors.text,
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {partnerName}
+              </span>
+            )}
           </div>
         </div>
 

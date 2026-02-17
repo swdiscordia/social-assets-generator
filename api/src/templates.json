@@ -36,17 +36,17 @@
     "aspectRatio": "1:1",
     "variables": [
       {
-        "name": "partnerName",
-        "type": "text",
-        "label": "Partner Name",
-        "default": "Partner",
-        "maxLength": 30
-      },
-      {
         "name": "partnerLogo",
         "type": "image",
-        "label": "Partner Logo URL",
+        "label": "Partner Logo",
         "default": ""
+      },
+      {
+        "name": "partnerName",
+        "type": "text",
+        "label": "Partner Name (optional if logo)",
+        "default": "",
+        "maxLength": 30
       },
       {
         "name": "tagline",
