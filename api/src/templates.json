@@ -29,6 +29,41 @@
     ]
   },
   {
+    "id": "partnership-horizontal",
+    "name": "Partnership Horizontal",
+    "description": "Side-by-side logos (Brand x Partner). Perfect for co-marketing posts.",
+    "category": "community",
+    "aspectRatio": "1:1",
+    "variables": [
+      {
+        "name": "partnerName",
+        "type": "text",
+        "label": "Partner Name",
+        "default": "Partner",
+        "maxLength": 30
+      },
+      {
+        "name": "partnerLogo",
+        "type": "image",
+        "label": "Partner Logo URL",
+        "default": ""
+      },
+      {
+        "name": "tagline",
+        "type": "text",
+        "label": "Tagline (optional)",
+        "default": "",
+        "maxLength": 100
+      },
+      {
+        "name": "backgroundImage",
+        "type": "image",
+        "label": "Background Image",
+        "default": ""
+      }
+    ]
+  },
+  {
     "id": "partnership-card",
     "name": "Partnership Card",
     "description": "Two logos with x separator, clean style. Perfect for partnership announcements.",

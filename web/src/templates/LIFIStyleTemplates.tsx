@@ -387,6 +387,216 @@ export function PartnershipCard({ brand, variables }: TemplateProps) {
 }
 
 /**
+ * Partnership Horizontal Template
+ * Two logos side by side with "x" separator
+ * Perfect for co-marketing announcements: "ShapeShift x Partner"
+ */
+export function PartnershipHorizontal({ brand, variables }: TemplateProps) {
+  const partnerName = variables.partnerName || 'Partner'
+  const partnerLogo = variables.partnerLogo || ''
+  const tagline = variables.tagline || ''
+  const backgroundImage = variables.backgroundImage || ''
+  const { width, height } = DIMENSIONS['1:1']
+
+  return (
+    <div
+      style={{
+        width,
+        height,
+        background: brand.colors.background,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: FONT_FAMILY,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background Image or Watermark */}
+      {backgroundImage && backgroundImage.includes('fox-logo.svg') ? (
+        <img
+          src="/images/fox-logo.svg"
+          alt=""
+          style={{
+            position: 'absolute',
+            bottom: '-15%',
+            right: '-10%',
+            width: '50%',
+            height: 'auto',
+            opacity: 0.05,
+            objectFit: 'contain',
+            transform: 'rotate(-15deg)',
+          }}
+        />
+      ) : backgroundImage ? (
+        <img
+          src={backgroundImage}
+          alt=""
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      ) : null}
+
+      {/* Gradient overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: `linear-gradient(135deg, ${brand.colors.background} 0%, ${hexAlpha(brand.colors.primary, 0.2)} 50%, ${hexAlpha(brand.colors.accent || brand.colors.primary, 0.15)} 100%)`,
+        }}
+      />
+
+      {/* Subtle grid pattern */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(${hexAlpha(brand.colors.text, 0.02)} 1px, transparent 1px),
+            linear-gradient(90deg, ${hexAlpha(brand.colors.text, 0.02)} 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 40,
+        }}
+      >
+        {/* Logos Row */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 40,
+          }}
+        >
+          {/* ShapeShift */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 14,
+            }}
+          >
+            <img
+              src="/images/fox-logo.svg"
+              alt={brand.name}
+              style={{
+                height: 56,
+                width: 'auto',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))',
+              }}
+            />
+            <span
+              style={{
+                fontSize: 36,
+                fontWeight: 800,
+                color: brand.colors.text,
+                letterSpacing: '0.02em',
+              }}
+            >
+              {brand.name}
+            </span>
+          </div>
+
+          {/* X Separator */}
+          <div
+            style={{
+              fontSize: 32,
+              fontWeight: 300,
+              color: hexAlpha(brand.colors.text, 0.4),
+            }}
+          >
+            ×
+          </div>
+
+          {/* Partner */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 14,
+            }}
+          >
+            {partnerLogo && (
+              <img
+                src={partnerLogo}
+                alt={partnerName}
+                style={{
+                  height: 56,
+                  width: 'auto',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))',
+                }}
+              />
+            )}
+            <span
+              style={{
+                fontSize: 36,
+                fontWeight: 800,
+                color: brand.colors.text,
+                letterSpacing: '0.02em',
+              }}
+            >
+              {partnerName}
+            </span>
+          </div>
+        </div>
+
+        {/* Tagline */}
+        {tagline && (
+          <div
+            style={{
+              fontSize: 22,
+              fontWeight: 500,
+              color: hexAlpha(brand.colors.text, 0.7),
+              textAlign: 'center',
+              maxWidth: 700,
+              lineHeight: 1.4,
+            }}
+          >
+            {tagline}
+          </div>
+        )}
+      </div>
+
+      {/* Decorative elements */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 30,
+          left: 40,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          fontSize: 14,
+          color: hexAlpha(brand.colors.text, 0.4),
+        }}
+      >
+        <span>{brand.website?.replace('https://', '')}</span>
+      </div>
+    </div>
+  )
+}
+
+/**
  * Stats Milestone - Clean LI.FI Style
  * Large centered numbers with minimal design
  */

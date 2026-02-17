@@ -3,6 +3,7 @@ import { TemplateProps } from './shared'
 import {
   HeroDeepGradient,
   PartnershipCard,
+  PartnershipHorizontal,
   StatsMilestone3D,
   EventAnnouncement,
   UIShowcase,
@@ -16,6 +17,7 @@ import {
 export const templateRegistry: Record<string, ComponentType<TemplateProps>> = {
   'hero-deep-gradient': HeroDeepGradient,
   'partnership-card': PartnershipCard,
+  'partnership-horizontal': PartnershipHorizontal,
   'stats-milestone-3d': StatsMilestone3D,
   'event-announcement': EventAnnouncement,
   'ui-showcase': UIShowcase,
