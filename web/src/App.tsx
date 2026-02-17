@@ -5,6 +5,7 @@ import { BrandConfig, TemplateDefinition, DEFAULT_BRAND } from './types'
 import { templateRegistry } from './templates/registry'
 import { GalleryView } from './GalleryView'
 import { MediaSelector } from './components/MediaSelector'
+import { Editor } from './editor'
 
 const fetchTemplates = async (): Promise<TemplateDefinition[]> => {
   const res = await fetch('/api/templates')
@@ -12,7 +13,7 @@ const fetchTemplates = async (): Promise<TemplateDefinition[]> => {
   return res.json()
 }
 
-type AppMode = 'gallery' | 'editor'
+type AppMode = 'gallery' | 'editor' | 'canvas'
 
 export default function App() {
   const [brand, setBrand] = useState<BrandConfig>(DEFAULT_BRAND)
@@ -119,7 +120,15 @@ export default function App() {
                   mode === 'editor' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Editor
+                Templates
+              </button>
+              <button
+                onClick={() => setMode('canvas')}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
+                  mode === 'canvas' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Canvas
               </button>
             </div>
           </div>
@@ -225,6 +234,12 @@ export default function App() {
             templates={templates}
             onSelectTemplate={handleSelectTemplate}
           />
+        )}
+
+        {mode === 'canvas' && (
+          <div className="fixed inset-0 z-50">
+            <Editor onBack={() => setMode('gallery')} />
+          </div>
         )}
 
         {mode === 'editor' && (
