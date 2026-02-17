@@ -1,22 +1,102 @@
+import { useEffect, useRef } from 'react'
+import { createRoot } from 'react-dom/client'
+import { toPng } from 'html-to-image'
 import { Toolbar } from './Toolbar'
 import { FabricCanvas } from './FabricCanvas'
 import { AssetsPanel } from './AssetsPanel'
 import { LayersPanel } from './LayersPanel'
 import { PropertiesPanel } from './PropertiesPanel'
+import { useEditorStore } from './store/editorStore'
+import { templateRegistry } from '../templates/registry'
+import { DIMENSIONS } from '../templates/shared'
+import { BrandConfig, TemplateDefinition } from '../types'
+import { FabricImage } from 'fabric'
 
 interface EditorProps {
   onBack?: () => void
-  initialTemplateId?: string | null
+  templateId?: string | null
+  brand: BrandConfig
+  templates: TemplateDefinition[]
 }
 
-export function Editor({ onBack, initialTemplateId }: EditorProps) {
+export function Editor({ onBack, templateId, brand, templates }: EditorProps) {
+  const { canvas, setCanvasSize } = useEditorStore()
+  const hasLoadedTemplate = useRef(false)
+
+  // Load template as background image when canvas is ready
+  useEffect(() => {
+    if (!canvas || !templateId || hasLoadedTemplate.current) return
+    
+    const template = templates.find(t => t.id === templateId)
+    const Component = templateRegistry[templateId]
+    
+    if (!template || !Component) return
+    
+    hasLoadedTemplate.current = true
+
+    // Get template dimensions
+    const dims = DIMENSIONS[template.aspectRatio as keyof typeof DIMENSIONS] || DIMENSIONS['1:1']
+    
+    // Update canvas size
+    setCanvasSize(dims)
+    canvas.setDimensions(dims)
+
+    // Get default variables
+    const defaultVars: Record<string, string> = {}
+    template.variables.forEach(v => {
+      if (v.default) defaultVars[v.name] = v.default
+    })
+
+    // Render template to image
+    const container = document.createElement('div')
+    container.style.position = 'absolute'
+    container.style.left = '-9999px'
+    container.style.top = '-9999px'
+    document.body.appendChild(container)
+
+    const root = createRoot(container)
+    root.render(<Component brand={brand} variables={defaultVars} />)
+
+    // Wait for render then capture
+    setTimeout(async () => {
+      try {
+        const dataUrl = await toPng(container, {
+          width: dims.width,
+          height: dims.height,
+          pixelRatio: 1,
+        })
+        
+        // Add as background image
+        const img = await FabricImage.fromURL(dataUrl)
+        img.set({
+          left: 0,
+          top: 0,
+          selectable: false,
+          evented: false,
+        })
+        canvas.add(img)
+        canvas.sendObjectToBack(img)
+        canvas.requestRenderAll()
+      } catch (err) {
+        console.error('Failed to load template:', err)
+      } finally {
+        root.unmount()
+        document.body.removeChild(container)
+      }
+    }, 100)
+
+    return () => {
+      hasLoadedTemplate.current = false
+    }
+  }, [canvas, templateId, templates, brand])
+
   return (
     <div className="h-screen flex flex-col bg-gray-950 text-white">
       <Toolbar onBack={onBack} />
       
       <div className="flex-1 flex overflow-hidden">
         {/* Left Sidebar - Assets */}
-        <AssetsPanel initialTemplateId={initialTemplateId} />
+        <AssetsPanel />
         
         {/* Canvas Area */}
         <FabricCanvas />
