@@ -15,12 +15,14 @@ FabricObject.prototype.set({
 export function FabricCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { setCanvas, setSelectedObjects, canvasSize } = useEditorStore()
+  const fabricRef = useRef<Canvas | null>(null)
+  const { canvas, setCanvas, setSelectedObjects, canvasSize } = useEditorStore()
 
+  // Initialize canvas once
   useEffect(() => {
-    if (!canvasRef.current) return
+    if (!canvasRef.current || fabricRef.current) return
 
-    const canvas = new Canvas(canvasRef.current, {
+    const fabricCanvas = new Canvas(canvasRef.current, {
       width: canvasSize.width,
       height: canvasSize.height,
       backgroundColor: '#0A0B0D',
@@ -29,35 +31,48 @@ export function FabricCanvas() {
     })
 
     // Selection events
-    canvas.on('selection:created', (e) => {
+    fabricCanvas.on('selection:created', (e) => {
       setSelectedObjects(e.selected || [])
     })
-    canvas.on('selection:updated', (e) => {
+    fabricCanvas.on('selection:updated', (e) => {
       setSelectedObjects(e.selected || [])
     })
-    canvas.on('selection:cleared', () => {
+    fabricCanvas.on('selection:cleared', () => {
       setSelectedObjects([])
     })
-    canvas.on('object:modified', () => {
-      // Force re-render of properties panel
-      const active = canvas.getActiveObjects()
+    fabricCanvas.on('object:modified', () => {
+      const active = fabricCanvas.getActiveObjects()
       setSelectedObjects([...active])
     })
 
-    setCanvas(canvas)
+    fabricRef.current = fabricCanvas
+    setCanvas(fabricCanvas)
 
     return () => {
-      canvas.dispose()
+      fabricCanvas.dispose()
+      fabricRef.current = null
       setCanvas(null)
     }
+  }, []) // Only run once on mount
+
+  // Update canvas size when canvasSize changes (without recreating)
+  useEffect(() => {
+    if (!fabricRef.current) return
+    fabricRef.current.setDimensions({
+      width: canvasSize.width,
+      height: canvasSize.height,
+    })
+    fabricRef.current.requestRenderAll()
   }, [canvasSize.width, canvasSize.height])
 
   // Calculate scale to fit canvas in container
+  const containerWidth = containerRef.current?.clientWidth || 800
+  const containerHeight = containerRef.current?.clientHeight || 600
   const scale = Math.min(
-    (containerRef.current?.clientWidth || 800) / canvasSize.width,
-    (containerRef.current?.clientHeight || 600) / canvasSize.height,
+    containerWidth / canvasSize.width,
+    containerHeight / canvasSize.height,
     1
-  ) * 0.9
+  ) * 0.85
 
   return (
     <div 

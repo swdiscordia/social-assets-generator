@@ -22,10 +22,14 @@ interface EditorProps {
 export function Editor({ onBack, templateId, brand, templates }: EditorProps) {
   const { canvas, setCanvasSize } = useEditorStore()
   const loadedTemplateRef = useRef<string | null>(null)
+  const isLoadingRef = useRef(false)
 
   // Load template into canvas
   const loadTemplate = useCallback(async (id: string) => {
-    if (!canvas) return
+    if (!canvas || isLoadingRef.current) {
+      console.log('Canvas not ready or already loading')
+      return
+    }
     
     const template = templates.find(t => t.id === id)
     const Component = templateRegistry[id]
@@ -35,9 +39,12 @@ export function Editor({ onBack, templateId, brand, templates }: EditorProps) {
       return
     }
 
+    isLoadingRef.current = true
+    console.log(`Loading template: ${id}`)
+
     // Clear existing canvas
     canvas.clear()
-    loadedTemplateRef.current = id
+    canvas.backgroundColor = '#0A0B0D'
 
     // Get template dimensions
     const dims = DIMENSIONS[template.aspectRatio as keyof typeof DIMENSIONS] || DIMENSIONS['1:1']
@@ -64,15 +71,18 @@ export function Editor({ onBack, templateId, brand, templates }: EditorProps) {
     const root = createRoot(container)
     root.render(<Component brand={brand} variables={defaultVars} />)
 
-    // Wait for render then capture
-    await new Promise(resolve => setTimeout(resolve, 150))
+    // Wait for render (images, fonts, etc.)
+    await new Promise(resolve => setTimeout(resolve, 300))
     
     try {
       const dataUrl = await toPng(container, {
         width: dims.width,
         height: dims.height,
         pixelRatio: 1,
+        cacheBust: true,
       })
+      
+      console.log('Template rendered, adding to canvas...')
       
       // Add as background image
       const img = await FabricImage.fromURL(dataUrl)
@@ -86,23 +96,35 @@ export function Editor({ onBack, templateId, brand, templates }: EditorProps) {
       canvas.add(img)
       canvas.sendObjectToBack(img)
       canvas.requestRenderAll()
+      
+      loadedTemplateRef.current = id
+      console.log('Template loaded successfully')
     } catch (err) {
       console.error('Failed to load template:', err)
     } finally {
       root.unmount()
       document.body.removeChild(container)
+      isLoadingRef.current = false
     }
   }, [canvas, templates, brand, setCanvasSize])
 
   // Load initial template when canvas is ready
   useEffect(() => {
-    if (!canvas || !templateId || loadedTemplateRef.current === templateId) return
-    loadTemplate(templateId)
+    if (!canvas || !templateId) return
+    if (loadedTemplateRef.current === templateId) return
+    
+    // Small delay to ensure canvas is fully initialized
+    const timer = setTimeout(() => {
+      loadTemplate(templateId)
+    }, 100)
+    
+    return () => clearTimeout(timer)
   }, [canvas, templateId, loadTemplate])
 
   // Handle loading a different template from AssetsPanel
   const handleLoadTemplate = (newTemplateId: string) => {
-    if (loadedTemplateRef.current === newTemplateId) return
+    console.log(`Switching to template: ${newTemplateId}`)
+    loadedTemplateRef.current = null // Allow reload
     loadTemplate(newTemplateId)
   }
 
