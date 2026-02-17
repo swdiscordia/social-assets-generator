@@ -13,13 +13,22 @@ interface Asset {
   category: string
 }
 
-// Partner assets - dynamically loaded from /images/partners/
-const PARTNER_ASSETS: Asset[] = [
-  // ShapeShift brand
+// Brand assets
+const BRAND_ASSETS: Asset[] = [
   { name: 'Fox Logo', url: '/images/fox-logo.svg', category: 'ShapeShift' },
   { name: 'Mountains', url: '/images/mountains.webp', category: 'ShapeShift' },
   { name: 'Fox Moon', url: '/images/fox-moon.webp', category: 'ShapeShift' },
 ]
+
+// Partner assets - add your partner logos here
+// Structure: { name: 'Logo Name', url: '/images/partners/<partner>/logo.svg', category: 'Partner Name' }
+const PARTNER_ASSETS: Asset[] = [
+  // Example (uncomment when you add partner assets):
+  // { name: 'Logo', url: '/images/partners/katana/logo.svg', category: 'Katana' },
+]
+
+// Combine all assets
+const ALL_ASSETS = [...BRAND_ASSETS, ...PARTNER_ASSETS]
 
 interface AssetsPanelProps {
   templates?: TemplateDefinition[]
@@ -127,7 +136,7 @@ export function AssetsPanel({ templates = [], brand, onLoadTemplate }: AssetsPan
   }
 
   // Group assets by category
-  const categories = PARTNER_ASSETS.reduce((acc, asset) => {
+  const categories = ALL_ASSETS.reduce((acc, asset) => {
     if (!acc[asset.category]) acc[asset.category] = []
     acc[asset.category].push(asset)
     return acc
