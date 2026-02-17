@@ -1,0 +1,1 @@
+# Partner Assets\n\nAdd partner logos here in subfolders:\n```\npartners/\n├── hyperliquid/\n│   └── logo.svg\n├── drift/\n│   └── logo.png\n└── jupiter/\n    └── logo.svg\n```\n\nReference in app: `/images/partners/hyperliquid/logo.svg`
