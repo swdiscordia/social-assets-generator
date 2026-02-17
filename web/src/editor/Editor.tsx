@@ -6,16 +6,17 @@ import { PropertiesPanel } from './PropertiesPanel'
 
 interface EditorProps {
   onBack?: () => void
+  initialTemplateId?: string | null
 }
 
-export function Editor({ onBack }: EditorProps) {
+export function Editor({ onBack, initialTemplateId }: EditorProps) {
   return (
     <div className="h-screen flex flex-col bg-gray-950 text-white">
       <Toolbar onBack={onBack} />
       
       <div className="flex-1 flex overflow-hidden">
         {/* Left Sidebar - Assets */}
-        <AssetsPanel />
+        <AssetsPanel initialTemplateId={initialTemplateId} />
         
         {/* Canvas Area */}
         <FabricCanvas />

@@ -19,6 +19,7 @@ export default function App() {
   const [brand, setBrand] = useState<BrandConfig>(DEFAULT_BRAND)
   const [mode, setMode] = useState<AppMode>('gallery')
   const [selectedTemplate, setSelectedTemplate] = useState<string>('chain-launch-hero')
+  const [canvasTemplateId, setCanvasTemplateId] = useState<string | null>(null)
   const [variables, setVariables] = useState<Record<string, string>>({})
   const [brandPanelOpen, setBrandPanelOpen] = useState(false)
   const assetRef = useRef<HTMLDivElement>(null)
@@ -41,6 +42,11 @@ export default function App() {
     })
     setVariables(defaultVars)
     setMode('editor')
+  }
+
+  const handleOpenInCanvas = (templateId: string) => {
+    setCanvasTemplateId(templateId)
+    setMode('canvas')
   }
 
   const handleExport = async () => {
@@ -233,12 +239,19 @@ export default function App() {
             brand={brand}
             templates={templates}
             onSelectTemplate={handleSelectTemplate}
+            onOpenInCanvas={handleOpenInCanvas}
           />
         )}
 
         {mode === 'canvas' && (
           <div className="fixed inset-0 z-50">
-            <Editor onBack={() => setMode('gallery')} />
+            <Editor 
+              onBack={() => {
+                setMode('gallery')
+                setCanvasTemplateId(null)
+              }}
+              initialTemplateId={canvasTemplateId}
+            />
           </div>
         )}
 

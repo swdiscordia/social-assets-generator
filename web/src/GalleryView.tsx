@@ -8,6 +8,7 @@ interface GalleryViewProps {
   brand: BrandConfig
   templates: TemplateDefinition[]
   onSelectTemplate: (templateId: string) => void
+  onOpenInCanvas?: (templateId: string) => void
 }
 
 const CATEGORY_LABELS: Record<TemplateCategory, string> = {
@@ -22,7 +23,7 @@ const CATEGORY_ORDER: TemplateCategory[] = [
 
 const THUMBNAIL_SCALE = 0.28
 
-export function GalleryView({ brand, templates, onSelectTemplate }: GalleryViewProps) {
+export function GalleryView({ brand, templates, onSelectTemplate, onOpenInCanvas }: GalleryViewProps) {
   const [activeCategory, setActiveCategory] = useState<TemplateCategory | 'all'>('all')
   const [exportingId, setExportingId] = useState<string | null>(null)
   const exportRefs = useRef<Record<string, HTMLDivElement | null>>({})
@@ -107,6 +108,14 @@ export function GalleryView({ brand, templates, onSelectTemplate }: GalleryViewP
           >
             Edit
           </button>
+          {onOpenInCanvas && (
+            <button
+              onClick={(e) => { e.stopPropagation(); onOpenInCanvas(template.id) }}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1.5 rounded-md text-xs font-medium transition"
+            >
+              Canvas
+            </button>
+          )}
           <button
             onClick={(e) => { e.stopPropagation(); handleQuickExport(template.id) }}
             disabled={exportingId === template.id}

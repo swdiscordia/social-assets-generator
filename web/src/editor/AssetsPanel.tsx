@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useEditorStore } from './store/editorStore'
 import { FabricImage, IText, Rect } from 'fabric'
 import { TEMPLATE_PRESETS, TemplatePreset } from './templates/presets'
@@ -25,9 +25,14 @@ const ASSETS: Asset[] = [
 
 type Tab = 'templates' | 'assets'
 
-export function AssetsPanel() {
+interface AssetsPanelProps {
+  initialTemplateId?: string | null
+}
+
+export function AssetsPanel({ initialTemplateId }: AssetsPanelProps) {
   const [activeTab, setActiveTab] = useState<Tab>('templates')
   const { canvas, canvasSize, setCanvasSize } = useEditorStore()
+  const hasLoadedInitial = useRef(false)
 
   const loadTemplate = async (template: TemplatePreset) => {
     if (!canvas) return
@@ -72,6 +77,18 @@ export function AssetsPanel() {
     
     canvas.requestRenderAll()
   }
+
+  // Load initial template if provided
+  useEffect(() => {
+    if (!canvas || !initialTemplateId || hasLoadedInitial.current) return
+    
+    // Find matching preset
+    const preset = TEMPLATE_PRESETS.find(p => p.id === initialTemplateId)
+    if (preset) {
+      hasLoadedInitial.current = true
+      loadTemplate(preset)
+    }
+  }, [canvas, initialTemplateId])
 
   const addAsset = async (url: string) => {
     if (!canvas) return
