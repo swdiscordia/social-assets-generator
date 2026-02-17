@@ -392,8 +392,8 @@ export function PartnershipCard({ brand, variables }: TemplateProps) {
  * Perfect for co-marketing announcements: "ShapeShift x Partner"
  */
 export function PartnershipHorizontal({ brand, variables }: TemplateProps) {
-  const partnerName = variables.partnerName || 'Partner'
   const partnerLogo = variables.partnerLogo || ''
+  const partnerName = variables.partnerName || (partnerLogo ? '' : 'Partner')
   const tagline = variables.tagline || ''
   const backgroundImage = variables.backgroundImage || ''
   const { width, height } = DIMENSIONS['1:1']
